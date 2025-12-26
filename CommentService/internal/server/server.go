@@ -2,8 +2,6 @@ package server
 
 import (
 	"context"
-	"database/sql"
-	"fmt"
 	"log"
 	"net/http"
 	"os"

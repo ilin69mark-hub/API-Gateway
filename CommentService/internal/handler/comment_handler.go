@@ -65,6 +65,11 @@ func (h *CommentHandler) GetCommentsByNewsID(w http.ResponseWriter, r *http.Requ
 		return
 	}
 
+	// 🔧 КРИТИЧЕСКОЕ ИСПРАВЛЕНИЕ: гарантируем что возвращаем массив, а не nil
+	if comments == nil {
+		comments = []model.Comment{} // Пустой массив вместо nil
+	}
+
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(comments)
