@@ -23,7 +23,7 @@ func StartModerationQueue(repo repository.CommentRepository) {
 		// 2. Проверяем каждый комментарий на запрещенные слова и обновляем статус
 		for _, comment := range comments {
 			approved := isCommentApproved(comment.Content)
-			
+
 			// 3. Обновляем статус approved
 			err := repo.UpdateCommentApproval(comment.ID, approved)
 			if err != nil {
